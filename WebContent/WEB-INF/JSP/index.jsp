@@ -8,16 +8,10 @@
 <body>
 	<h1>Vandaag zijn we ${openGesloten}</h1>
 	<img src="images/${openGesloten}.png" alt="${openGesloten}"/>
-	<dl>
-		<dt>Straatnaam</dt>
-		<dd>${adres.straat}</dd>
-		<dt>Huisnummer</dt>
-		<dd>${adres.huisNr}</dd>
-		<dt>Te</dt>
-		<dd>${adres.gemeente.postCode}</dd>
-		<dd>${adres.gemeente.naam}</dd>
-		
-	</dl>
+	<address>
+		Kom eens langs op ${adres.straat} ${adres.huisNr}, 
+		${adres.gemeente.postCode} ${adres.gemeente.naam}
+	</address>
 	
 </body>
 </html>
