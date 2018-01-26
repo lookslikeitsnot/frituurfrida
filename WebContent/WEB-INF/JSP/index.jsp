@@ -1,9 +1,11 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!doctype html>
 <html>
 <head>
-<link rel='icon' href='images/favicon.ico'>
-<title>Frituur Frida</title>
+<c:import url='/WEB-INF/JSP/head.jsp'>
+	<c:param name='title' value='Frituur Linda' />
+</c:import>
 </head>
 <body>
 	<h1>Vandaag zijn we ${openGesloten}</h1>
