@@ -16,7 +16,7 @@ import be.vdab.entities.Gemeente;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/index.htm")
+@WebServlet(urlPatterns = "/index.htm", name = "indexservlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/index.jsp";
@@ -25,6 +25,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		DayOfWeek dag = LocalDateTime.now().getDayOfWeek();
+//		request.setAttribute("telefoonnummer", this.getInitParameter("telefoonnummer"));
 		request.setAttribute("openGesloten", dag.equals(DayOfWeek.MONDAY) || dag.equals(DayOfWeek.THURSDAY)
 				? "gesloten" : "open");
 		request.setAttribute("adres", 

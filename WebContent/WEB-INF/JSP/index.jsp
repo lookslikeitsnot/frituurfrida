@@ -13,6 +13,7 @@
 	<address>
 		Kom eens langs op ${adres.straat} ${adres.huisNr}, 
 		${adres.gemeente.postCode} ${adres.gemeente.naam}
+		Bel de helpdesk op <a href="tel:${initParam.telefoonnummer}">${initParam.telefoonnummer}</a>
 	</address>
 	
 </body>
