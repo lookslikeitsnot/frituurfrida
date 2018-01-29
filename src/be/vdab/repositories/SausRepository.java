@@ -29,4 +29,8 @@ public class SausRepository {
 				.filter(saus->Arrays.asList(saus.getIngredienten()).contains(ingredient))
 				.collect(Collectors.toList());
 	}
+	
+	public void remove(Long nummer) {
+		SAUZEN.remove(nummer);
+	}
 }
