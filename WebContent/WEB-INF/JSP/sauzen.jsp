@@ -16,7 +16,7 @@
 				<li>
 					<input type="checkbox" name="sausnummer" value="${saus.nummer}">
 					<label>${saus.nummer}: <c:out value='${saus.naam}'/> 
-						<c:if test="${!empty  saus.ingredienten}">
+						<c:if test="${!empty saus.ingredienten}">
 							ingredienten: 
 							<c:forEach var="ingredient" items="${saus.ingredienten}"
 										varStatus="status">
