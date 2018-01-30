@@ -1,14 +1,20 @@
 package be.vdab.entities;
 
-public class Deur {
-	private int number;
+import java.io.Serializable;
+
+public class Deur implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int nummer;
 	private boolean opened;
 	private boolean containsFry;
 	
-	public Deur(int number, boolean containsFry) {
-		this.number = number;
-		this.containsFry = containsFry;
-		opened = false;
+	public Deur(int number) {
+		this.nummer = number;
+		this.containsFry = false;
+		this.opened = false;
 	}
 
 	public boolean isOpened() {
@@ -27,11 +33,16 @@ public class Deur {
 		this.containsFry = containsFry;
 	}
 
-	public int getNumber() {
-		return number;
+	public int getNummer() {
+		return nummer;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public void setNummer(int number) {
+		this.nummer = number;
+	}
+	
+	public String getImage() {
+		return this.opened ? this.containsFry ? "gevonden" : "deuropen" : "deurtoe";
 	}
 }
+	

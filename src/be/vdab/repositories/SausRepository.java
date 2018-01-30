@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -32,5 +33,12 @@ public class SausRepository {
 	
 	public void remove(Long nummer) {
 		SAUZEN.remove(nummer);
+	}
+	
+	public static String getRandomSausName() {
+		int randomNum = new  Random().nextInt(SAUZEN.size());
+		Object[] sauzen = SAUZEN.values().toArray();
+		Saus randomSaus = (Saus) sauzen[randomNum];
+		return randomSaus.getNaam();
 	}
 }
