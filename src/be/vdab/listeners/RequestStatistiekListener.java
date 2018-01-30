@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @WebListener
 public class RequestStatistiekListener implements ServletRequestListener, ServletContextListener {
-	private final static String STATISTIEK = "statistiek";
+	private final static String STATISTIEK = "statistiekByListener";
 	private final static Set<String> UITGESLOTEN_EXTENSIES = new CopyOnWriteArraySet<>(
 			Arrays.asList("png", "gif", "jpg", "css", "js", "ico"));
 
