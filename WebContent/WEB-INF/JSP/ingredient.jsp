@@ -18,7 +18,7 @@
 		<h1>Deze sauzen bevatten ${param.ingredient}</h1>
 		<ul class='zebra'>
 			<c:forEach var='saus' items='${sauzen}'>
-				<li><c:out value='${saus.naam}' /></li>
+				<li><c:out value='${saus}' /></li>
 			</c:forEach>
 		</ul>
 	</c:if>

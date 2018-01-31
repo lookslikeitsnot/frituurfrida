@@ -2,13 +2,16 @@ package be.vdab.servlets;
 
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
+import be.vdab.repositories.SausRepository;
 import be.vdab.spellen.SausRaden;
 
 @WebServlet("/sausraden.htm")
@@ -17,6 +20,11 @@ public class SausRadenServlet extends HttpServlet {
 	private static final String VIEW = "/WEB-INF/JSP/sausraden.jsp";
 	private static final String SPEL = "sausRaden";
 	private static final int MAXPOGINGEN = 10;
+	private final transient SausRepository sausRepository = new SausRepository();
+	@Resource(name = SausRepository.JNDI_NAME)
+	void setDataSource(DataSource dataSource) {
+		sausRepository.setDataSource(dataSource);
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +32,7 @@ public class SausRadenServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (session.getAttribute(SPEL) == null) {
 
-			session.setAttribute(SPEL, new SausRaden());
+			session.setAttribute(SPEL, new SausRaden(sausRepository.getRandomSausName()));
 		}
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}

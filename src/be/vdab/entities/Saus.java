@@ -1,16 +1,18 @@
 package be.vdab.entities;
 
+import java.util.List;
+
 public class Saus {
-	private long nummer;
+	private int nummer;
 	private String naam;
-	private String[] ingredienten;
+	private List<String> ingredienten;
 	
 	
-	public Saus(long nummer, String naam) {
+	public Saus(int nummer, String naam) {
 		setNummer(nummer);
 		setNaam(naam);
 	}
-	public Saus(long nummer, String naam, String... ingredienten) {
+	public Saus(int nummer, String naam, List<String> ingredienten) {
 		this(nummer, naam);
 		setIngredienten(ingredienten);
 	}
@@ -20,11 +22,11 @@ public class Saus {
 	public String getNaam() {
 		return naam;
 	}
-	public String[] getIngredienten() {
+	public List<String> getIngredienten() {
 		return ingredienten;
 	}
 	
-	public void setNummer(long nummer) {
+	public void setNummer(int nummer) {
 		this.nummer = nummer;
 	}
 	
@@ -39,7 +41,7 @@ public class Saus {
 		this.naam = naam;
 	}
 	
-	public static boolean isIngredientenValid(String[] ingredienten) {
+	public static boolean isIngredientenValid(List<String> ingredienten) {
 		boolean res = true;
 		for(String ingredient: ingredienten) {
 			res &= isNaamValid(ingredient);
@@ -47,7 +49,7 @@ public class Saus {
 		return res;
 	}
 	
-	public void setIngredienten(String[] ingredienten) {
+	public void setIngredienten(List<String> ingredienten) {
 		if(!isIngredientenValid(ingredienten)) {
 			throw new IllegalArgumentException();
 		}

@@ -4,21 +4,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import be.vdab.repositories.SausRepository;
-
 public class SausRaden implements Serializable {
 
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String teVinden;
 	private String gevonden;
 	private int pogingen;
 	private List<Character> geprobeerdeLetters;
+	
 
-	public SausRaden() {
-		teVinden = SausRepository.getRandomSausName();
+	public SausRaden(String teVinden) {
+		this.teVinden = teVinden;
 		pogingen = 0;
 		geprobeerdeLetters = new ArrayList<>();
 	}
