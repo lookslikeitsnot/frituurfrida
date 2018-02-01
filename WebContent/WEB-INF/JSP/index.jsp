@@ -1,20 +1,37 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
+<fmt:setBundle basename='resourceBundles.teksten' />
 <!doctype html>
 <html>
 <head>
+<fmt:message key='naam' var="msgNaam"/>
 <c:import url='/WEB-INF/JSP/head.jsp'>
-	<c:param name='title' value='Frituur Linda' />
+	<c:param name='title' value="${msgNaam}" />
 </c:import>
 </head>
 <body>
-	<h1>Vandaag zijn we ${openGesloten}</h1>
-	<img src="images/${openGesloten}.png" alt="${openGesloten}"/>
+	<fmt:message key='${openGesloten}' var="msgOC"/>
+	<h1>
+		<fmt:message key='vandaag'>
+			<fmt:param value="${msgOC}" />
+		</fmt:message>
+	</h1>
+	<img src="images/${openGesloten}<fmt:message key='imgLan'/>.png"
+		alt="<fmt:message key='${openGesloten}'/>" />
 	<address>
-		Kom eens langs op ${adres.straat} ${adres.huisNr}, 
-		${adres.gemeente.postCode} ${adres.gemeente.naam}
-		Bel de helpdesk op <a href="tel:${initParam.telefoonnummer}">${initParam.telefoonnummer}</a>
+		<fmt:message key='komLangs'>
+			<fmt:param value='${adres.straat}' />
+			<fmt:param value='${adres.huisNr}' />
+			<fmt:param value='${adres.gemeente.postCode}' />
+			<fmt:param value='${adres.gemeente.naam}' />
+		</fmt:message>
+		<fmt:message key='belHelpdesk'>
+			<fmt:param
+				value='<a
+			href="tel:${initParam.telefoonnummer}">${initParam.telefoonnummer}</a>' />
+		</fmt:message>
 	</address>
-	
+
 </body>
 </html>
