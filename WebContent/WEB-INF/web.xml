@@ -4,4 +4,8 @@
     <param-name>telefoonnummer</param-name>
     <param-value>05/255.25.25</param-value>
   </context-param>
+  <context-param>
+    <param-name>beheerderpwd</param-name>
+    <param-value>1234</param-value>
+  </context-param>
 </web-app>

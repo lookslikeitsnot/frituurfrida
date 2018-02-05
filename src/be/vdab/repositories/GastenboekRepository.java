@@ -12,8 +12,9 @@ import java.util.List;
 import be.vdab.entities.GastenboekEntry;
 
 public class GastenboekRepository extends AbstractRepository {
-	private static final String SELECT_ENTRIES = "SELECT datum, gastentekst, gastnaam FROM gastenboek";
+	private static final String SELECT_ENTRIES = "SELECT id, datum, gastentekst, gastnaam FROM gastenboek";
 	private static final String ADD_ENTRY = "INSERT INTO gastenboek(gastentekst, gastnaam) VALUES (?,?)";
+	private static final String DEL_ENTRY = "DELETE FROM gastenboek WHERE id=?";
 
 	public List<GastenboekEntry> findAll() {
 		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
@@ -34,10 +35,11 @@ public class GastenboekRepository extends AbstractRepository {
 	}
 
 	private GastenboekEntry resultSetRijNaarEntry(ResultSet resultSet) throws SQLException {
+		int nummer = resultSet.getInt("id");
 		LocalDateTime datum = resultSet.getTimestamp("datum").toLocalDateTime();
 		String gastentekst = resultSet.getString("gastenTekst");
 		String gastnaam = resultSet.getString("gastnaam");
-		return new GastenboekEntry(gastentekst, gastnaam, datum);
+		return new GastenboekEntry(nummer, gastentekst, gastnaam, datum);
 	}
 
 	public void create(GastenboekEntry gastenboekEntry) {
@@ -49,6 +51,19 @@ public class GastenboekRepository extends AbstractRepository {
 			statement.setString(2, gastenboekEntry.getGastnaam());
 			statement.executeUpdate();			
 			connection.commit();
+		} catch (SQLException ex) {
+			throw new RepositoryException(ex);
+		}
+	}
+	
+	public void delete(int entryNummer) {
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(DEL_ENTRY)) {
+			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+			connection.setAutoCommit(false);
+			statement.setInt(1, entryNummer);
+			statement.executeUpdate();
+			connection.commit();			
 		} catch (SQLException ex) {
 			throw new RepositoryException(ex);
 		}

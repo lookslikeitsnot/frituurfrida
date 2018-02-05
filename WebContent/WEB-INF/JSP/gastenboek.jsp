@@ -12,14 +12,17 @@
 <body>
 	<vdab:menu />
 	<h1>Gastenboek</h1>
+	<c:if test="${not empty beheerder}">
+		<form method="post">
+			<input type="submit" name="uitloggen" value="Uitloggen" />
+		</form>
+	</c:if>
 	<c:choose>
 		<c:when test="${not empty toevoegen}">
 			<form method='post' id='toevoegform'>
-				<label>Naam</label>
-				<input name="gastnaam" type="text" autofocus required/>
-				<label>Bericht</label>
-				<input name="gastentekst" type="text" required/>
-				<input type="submit" value="Toevoegen"/>
+				<label>Naam</label> <input name="gastnaam" type="text" autofocus
+					required /> <label>Bericht</label> <input name="gastentekst"
+					type="text" required /> <input type="submit" value="Toevoegen" />
 			</form>
 		</c:when>
 		<c:otherwise>
@@ -29,16 +32,28 @@
 			<a href="${toevoegen}">Toevoegen</a>
 		</c:otherwise>
 	</c:choose>
-	<dl>
-		<c:forEach var="gEntry" items="${gastenboek}">
-			<fmt:parseDate value="${gEntry.datum}" pattern="yyyy-MM-dd"
-				var="datum" type="date" />
-			<dt>
-				<fmt:formatDate value='${datum}' type='date' dateStyle='long' />
-				: ${gEntry.gastnaam}
-			</dt>
-			<dd>${gEntry.gastentekst}</dd>
-		</c:forEach>
-	</dl>
+
+	<form method="post">
+
+		<dl>
+			<c:forEach var="gEntry" items="${gastenboek}">
+				<c:if test="${not empty beheerder}">
+					<input type="checkbox" name="entryId" value="${gEntry.nummer}">
+
+				</c:if>
+				<fmt:parseDate value="${gEntry.datum}" pattern="yyyy-MM-dd"
+					var="datum" type="date" />
+				<dt>
+					<fmt:formatDate value='${datum}' type='date' dateStyle='long' />
+					: ${gEntry.gastnaam}
+				</dt>
+				<dd>${gEntry.gastentekst}</dd>
+			</c:forEach>
+		</dl>
+		<c:if test="${not empty beheerder}">
+			<input type="submit" name="verwijderen" value="verwijderen"/>
+		</c:if>
+	</form>
+	${fouten}
 </body>
 </html>
