@@ -29,7 +29,7 @@ public class IngredientServlet extends HttpServlet {
 		String fout = new String();
 		String ingredient = request.getParameter("ingredient");
 		if (!isIngredientValid(ingredient)) {
-			fout = "Ingrediënt is niet geldig!";
+			fout = "IngrediÃ«nt is niet geldig!";
 			request.setAttribute("fout", fout);
 		} else {
 			request.setAttribute("sauzen", sausRepository.findByIngredient(ingredient));

@@ -1,5 +1,6 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'
 	trimDirectiveWhitespaces='true'%>
+	<%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!doctype html>
 <html lang='nl'>
@@ -9,6 +10,7 @@
 </c:import>
 </head>
 <body>
+<vdab:menu/>
 	<h1>Sauzen</h1>
 	<form method="post" id="sausverwijderen">
 		<ul>

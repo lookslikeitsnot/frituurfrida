@@ -1,3 +1,49 @@
-h1{
-	color:olive;
+* {
+	font-family: verdana;
+	font-size: 0.99em;
+}
+
+body {
+	width: 80%;
+	max-width: 1200px;
+	margin: auto;
+}
+
+h1 {
+	color: olive;
+}
+
+header {
+	/* 	background-color:blue; */
+	color: olive;
+}
+
+nav {
+	/* 	background-color: blue; */
+	background-color: #f9fd9f;
+	padding: 2px;
+}
+
+nav ul {
+	list-style-type: none;
+	/* 	background-color: #f9fd9f; */
+	padding: 1%;
+	text-align: center;
+}
+
+nav ul li {
+	display: inline-block;
+	padding: 1%;
+	white-space: nowrap;
+	border-right: 2px solid oragne;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav ul li:hover {
+	background-color: orange;
+	color: white;
 }

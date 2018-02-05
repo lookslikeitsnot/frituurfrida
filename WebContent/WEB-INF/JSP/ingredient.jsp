@@ -1,4 +1,5 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<%@taglib uri='http://vdab.be/tags' prefix='vdab'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!doctype html>
 <html lang='nl'>
@@ -8,6 +9,7 @@
 </c:import>
 </head>
 <body>
+<vdab:menu/>
 	<h1>Ingrediënt Zoeker</h1>
 	<form>
 		<input name='ingredient' value='${param.ingredient}' type='text'
