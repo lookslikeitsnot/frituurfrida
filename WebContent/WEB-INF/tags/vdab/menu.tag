@@ -10,6 +10,7 @@
 			<li><a href="<c:url value='/ingredient.htm'/>">Zoek sauzen op basis van een ingredient</a></li>
 			<li><a href="<c:url value='/sausraden.htm'/>">Raad de saus</a></li>
 			<li><a href="<c:url value='/sauzen.htm'/>">Sauzen</a></li>
+			<li><a href="<c:url value='/gastenboek.htm'/>">Gastenboek</a></li>
 		</ul>
 	</nav>
 </header>

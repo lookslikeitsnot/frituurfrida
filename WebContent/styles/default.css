@@ -1,3 +1,7 @@
+
+
+
+
 * {
 	font-family: verdana;
 	font-size: 0.99em;
@@ -21,24 +25,28 @@ header {
 nav {
 	/* 	background-color: blue; */
 	background-color: #f9fd9f;
-	padding: 2px;
 }
 
 nav ul {
-	list-style-type: none;
+/* 	list-style-type: none; */
+	margin:0;
 	/* 	background-color: #f9fd9f; */
-	padding: 1%;
+	padding: 2%;
 	text-align: center;
 }
 
 nav ul li {
 	display: inline-block;
-	padding: 1%;
 	white-space: nowrap;
-	border-right: 2px solid oragne;
+	border-right: 2px solid orange;
+	margin-left:-.4em;
+
+	
 }
 
 nav ul li a {
+/* 	padding: 10%; */
+	padding:0 20px 0 20px;
 	text-decoration: none;
 	color: inherit;
 }
